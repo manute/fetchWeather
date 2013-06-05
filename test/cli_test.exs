@@ -11,9 +11,8 @@ defmodule CliTest do
 
   end
 
-  test "matches to process the weather if no arguments passes" do
-   	 assert parse_args([]) == :weather
-
+  test "matches to process the weather" do
+   	 assert parse_args(["weather"]) == :weather
   end
 
  end 
