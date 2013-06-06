@@ -19,10 +19,10 @@ defmodule Weather.CLI do
                                      	  aliases:  [ h:    :help   ])
 		 case parse do
 
-		 	{[help: true], _ } 	      -> :help
-		 	{[weather], _ }     	  -> :weather 
-		 	{[weather], [help: true]} -> :help
-		 	_						  -> :help
+		 	{[help: true], _ } 	    -> :help
+		 	{[fetch], _ }     	  	-> :fetch 
+		 	{[fetch], [help: true]} -> :help
+		 	_						-> :help
 		 	
 		 end
 	end
@@ -31,13 +31,13 @@ defmodule Weather.CLI do
 		
 		IO.puts """
     		Get the information for the weather in the url : #{@url}.
-    		usage: weather
+    		usage: fetch
    	 	"""
    	 	System.halt(0)
 
 	end
 
-	defp process(:weather) do
+	defp process(:fetch) do
 		fetch
 		|> parse_xml
 	end

@@ -5,14 +5,14 @@ defmodule CliTest do
 
   import Weather.CLI ,only: [ parse_args: 1]
 
-  test ":help returned by option parsin with -h and --help " do
+  test ":help returned by option parsin with -h and --help" do
    	 assert parse_args(["-h"   	]) == :help
 	 assert parse_args(["--help"]) == :help
 
   end
 
-  test "matches to process the weather" do
-   	 assert parse_args(["weather"]) == :weather
+  test ":fecth returned by option parsin with fetch" do
+   	 assert parse_args(["fetch"]) == :fetch
   end
 
  end 
