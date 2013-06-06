@@ -1,5 +1,9 @@
 defmodule Weather.CLI do
 	
+	import  Weather.FetchXML ,only: [ fetch: 0]
+	import  Weather.ParseXML ,only: [ parse_xml: 1]
+
+
 	@url "http://w1.weather.gov/xml/current_obs/KDTO.xml"
 
 	def run(argv) do
@@ -33,7 +37,8 @@ defmodule Weather.CLI do
 	end
 
 	def process(:weather) do
-
+		fetch
+		|> parse_xml
 	end
 	
 end
