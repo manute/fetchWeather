@@ -10,6 +10,7 @@ defmodule Weather.CLI do
 		argv
 		|> parse_args
 		|> process
+		|> printable_pretty_data
 	end
 
 	def parse_args(argv) do
@@ -26,7 +27,7 @@ defmodule Weather.CLI do
 		 end
 	end
 
-	def process(:help) do
+	defp process(:help) do
 		
 		IO.puts """
     		Get the information for the weather in the url : #{@url}.
@@ -36,9 +37,18 @@ defmodule Weather.CLI do
 
 	end
 
-	def process(:weather) do
+	defp process(:weather) do
 		fetch
 		|> parse_xml
 	end
 	
+	defp printable_pretty_data(data_list) do
+		Enum.each data_list ,fn(x) -> print(x) end
+	end
+
+	defp print(tuple_data) do
+		{column,value} = tuple_data
+		IO.puts "#{column} : #{value}\n"
+	end
+
 end
